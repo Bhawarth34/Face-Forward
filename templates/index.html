@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -18,6 +18,27 @@
             <h3 class="mt-5">Live Streaming</h3>
             <img src="{{ url_for('video_feed') }}" width="100%">
         </div>
+		<div class="col">
+				<h3>Recognised Data</h3>
+				<p id="name">Data: </p>
+		    	<p id="uid">Data: </p>
+				<p id="course">Data: </p>
+				<p id="section">Data: </p>
+
+		</div>
+		<script type="text/javascript">
+        var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+        socket.on('Facedata', function(data) {
+		    console.log(data);
+            document.getElementById('name').innerText = "Data: " + data.Name.S;
+		    document.getElementById('uid').innerText = "Data: " + data.UID.S;
+		    document.getElementById('course').innerText = "Data: " + data.Course.S;
+		    document.getElementById('section').innerText = "Data: " + data.Section.S;
+
+		    
+        });
+    </script>
     </div>
 </div>
 </body>
