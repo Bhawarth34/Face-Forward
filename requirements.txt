@@ -3,7 +3,7 @@ bidict==0.23.1
 blinker==1.8.2
 boto3==1.34.124
 botocore==1.34.124
-certifi==2024.6.2
+certifi>=2024.07.04
 charset-normalizer==3.3.2
 click==8.1.7
 dill==0.3.8
